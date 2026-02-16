@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gryphon Investing — Stock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="app">
+    
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+      <div class="logo-section">
+        <div class="logo">
+          <!-- LOGO (NO ui-icon CLASS) -->
+          <img id="siteLogo" src="/assets/icons/Gryphon.svg" alt="Gryphon Logo">
+        </div>
+
+        <p class="company-name">
+          Gryphon<span class="investing">Investing</span>
+        </p>
+      </div>
+
+      <div class="menu-label">Menu</div>
+
+      <nav class="menu">
+        <a href="index.html" class="nav-item">
+          <img src="/assets/icons/dashboard.svg" class="ui-icon" width="20" height="20">
+          Dashboard
+        </a>
+
+        <a href="stock.html" class="nav-item active">
+          <img src="/assets/icons/stock.svg" class="ui-icon" width="20" height="20">
+          Stock
+        </a>
+
+        <a href="portfolio.html" class="nav-item">
+          <img src="/assets/icons/portfolio.svg" class="ui-icon" width="20" height="20">
+          Portfolio
+        </a>
+
+        <a href="alerts.html" class="nav-item">
+          <img src="/assets/icons/alerts.svg" class="ui-icon" width="20" height="20">
+          Alerts
+        </a>
+
+        <a href="settings.html" class="nav-item">
+          <img src="/assets/icons/settings.svg" class="ui-icon" width="20" height="20">
+          Settings
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      
+      <!-- Header -->
+      <header class="header">
+        <h1 class="page-title">Stock</h1>
+
+        <div class="header-right">
+          <div class="search-box">
+            <img src="/assets/icons/search.svg" class="ui-icon" width="20" height="20">
+            <input type="text" placeholder="Search Stock..." />
+          </div>
+        </div>
+
+        <div class="header-icons">
+
+          <!-- Alert Button -->
+          <button id="alertButton" class="icon-button">
+            <img src="/assets/icons/alerts2.svg" class="ui-icon" width="25" height="25">
+          </button>
+
+          <!-- User Icon -->
+          <img src="/assets/icons/user.svg" class="ui-icon" width="28" height="28">
+
+          <span class="logout-text">Log out</span>
+
+          <!-- Alert Popup -->
+          <div id="alertPopup" class="popup">
+            <div class="popup-content">
+              <span class="close-btn">&times;</span>
+              <h3>Notifications</h3>
+              <p>You have new alerts! Check your alerts page for details.</p>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- Content Area -->
+<div class="content">
+  <div class="stock-grid">
+
+    <!-- LEFT SIDE -->
+    <div class="stock-left">
+
+      <!-- STOCK OVERVIEW -->
+      <div class="stock-card">
+        <h3 class="card-title">Stock Overview</h3>
+
+        <table class="stock-table">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Name</th>
+              <th>Trend</th>
+              <th>Price</th>
+              <th>Change</th>
+              <th>Volume</th>
+              <th>Market Cap</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>NVDA</td>
+              <td>NVIDIA Corporation</td>
+              <td>
+                <svg class="sparkline green" viewBox="0 0 120 30">
+                  <polyline points="0,22 10,20 20,18 30,16 40,14 50,15 60,12 70,10 80,8 90,6 100,8 110,5 120,3" />
+                </svg>
+              </td>
+              <td>175.46</td>
+              <td class="positive">+3.42%</td>
+              <td>163.8M</td>
+              <td>4.26T</td>
+            </tr>
+
+            <tr>
+              <td>AAPL</td>
+              <td>Apple Inc.</td>
+              <td>
+                <svg class="sparkline green" viewBox="0 0 120 30">
+                  <polyline points="0,18 10,17 20,19 30,15 40,14 50,16 60,13 70,12 80,10 90,9 100,7 110,8 120,6" />
+                </svg>
+              </td>
+              <td>189.22</td>
+              <td class="positive">+1.18%</td>
+              <td>82.4M</td>
+              <td>2.95T</td>
+            </tr>
+
+            <tr>
+              <td>TSLA</td>
+              <td>Tesla Inc.</td>
+              <td>
+                <svg class="sparkline red" viewBox="0 0 120 30">
+                  <polyline points="0,8 10,10 20,12 30,14 40,16 50,18 60,19 70,21 80,22 90,24 100,25 110,27 120,28" />
+                </svg>
+              </td>
+              <td>241.88</td>
+              <td class="negative">-2.94%</td>
+              <td>101.3M</td>
+              <td>768B</td>
+            </tr>
+
+            <tr>
+              <td>MSFT</td>
+              <td>Microsoft Corp.</td>
+              <td>
+                <svg class="sparkline green" viewBox="0 0 120 30">
+                  <polyline points="0,25 10,23 20,22 30,20 40,18 50,16 60,15 70,13 80,11 90,9 100,8 110,7 120,5" />
+                </svg>
+              </td>
+              <td>401.15</td>
+              <td class="positive">+0.96%</td>
+              <td>29.1M</td>
+              <td>3.02T</td>
+            </tr>
+
+            <tr>
+              <td>AMD</td>
+              <td>Advanced Micro Devices</td>
+              <td>
+                <svg class="sparkline green" viewBox="0 0 120 30">
+                  <polyline points="0,24 10,22 20,20 30,19 40,18 50,17 60,15 70,14 80,12 90,11 100,9 110,8 120,7" />
+                </svg>
+              </td>
+              <td>168.42</td>
+              <td class="positive">+4.11%</td>
+              <td>65.7M</td>
+              <td>272B</td>
+            </tr>
+
+            <tr>
+              <td>GOOGL</td>
+              <td>Alphabet Inc.</td>
+              <td>
+                <svg class="sparkline red" viewBox="0 0 120 30">
+                  <polyline points="0,10 10,12 20,13 30,15 40,16 50,18 60,20 70,21 80,23 90,24 100,26 110,27 120,29" />
+                </svg>
+              </td>
+              <td>142.77</td>
+              <td class="negative">-0.88%</td>
+              <td>21.4M</td>
+              <td>1.78T</td>
+            </tr>
+
+            <tr>
+              <td>JPM</td>
+              <td>JPMorgan Chase</td>
+              <td>
+                <svg class="sparkline green" viewBox="0 0 120 30">
+                  <polyline points="0,26 10,24 20,23 30,22 40,21 50,20 60,19 70,18 80,16 90,15 100,13 110,12 120,10" />
+                </svg>
+              </td>
+              <td>188.33</td>
+              <td class="positive">+0.67%</td>
+              <td>11.2M</td>
+              <td>550B</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SECTOR DISTRIBUTION -->
+      <div class="stock-card">
+        <h3 class="card-title">Sector Distribution</h3>
+
+        <div class="sector-row"><div class="sector-label">Technology</div><div class="sector-bar"><div class="sector-fill" style="width: 28.56%;"></div></div><div class="sector-value">28.56%</div></div>
+        <div class="sector-row"><div class="sector-label">Financial Services</div><div class="sector-bar"><div class="sector-fill" style="width: 14.74%;"></div></div><div class="sector-value">14.74%</div></div>
+        <div class="sector-row"><div class="sector-label">Healthcare</div><div class="sector-bar"><div class="sector-fill" style="width: 13.22%;"></div></div><div class="sector-value">13.22%</div></div>
+        <div class="sector-row"><div class="sector-label">Consumer Discretionary</div><div class="sector-bar"><div class="sector-fill" style="width: 11.30%;"></div></div><div class="sector-value">11.30%</div></div>
+        <div class="sector-row"><div class="sector-label">Energy</div><div class="sector-bar"><div class="sector-fill" style="width: 9.14%;"></div></div><div class="sector-value">9.14%</div></div>
+        <div class="sector-row"><div class="sector-label">Industrials</div><div class="sector-bar"><div class="sector-fill" style="width: 8.01%;"></div></div><div class="sector-value">8.01%</div></div>
+        <div class="sector-row"><div class="sector-label">Communication Services</div><div class="sector-bar"><div class="sector-fill" style="width: 6.72%;"></div></div><div class="sector-value">6.72%</div></div>
+        <div class="sector-row"><div class="sector-label">Utilities</div><div class="sector-bar"><div class="sector-fill" style="width: 5.40%;"></div></div><div class="sector-value">5.40%</div></div>
+        <div class="sector-row"><div class="sector-label">Real Estate</div><div class="sector-bar"><div class="sector-fill" style="width: 4.12%;"></div></div><div class="sector-value">4.12%</div></div>
+        <div class="sector-row"><div class="sector-label">Materials</div><div class="sector-bar"><div class="sector-fill" style="width: 3.79%;"></div></div><div class="sector-value">3.79%</div></div>
+
+      </div>
+
+    </div> <!-- CLOSE stock-left -->
+
+    <!-- RIGHT SIDE -->
+    <div class="stock-right">
+      <div class="stock-card">
+        <h3 class="card-title">Market News</h3>
+
+        <div class="news-item">
+          <div class="news-title">S&P 500 slips as Treasury yields climb to 4.3%</div>
+          <div class="news-desc">Investors react to renewed inflation concerns and hawkish Fed commentary.</div>
+          <div class="news-meta">Gryphon Markets · 4m ago</div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-title">NVIDIA extends rally on AI data center demand</div>
+          <div class="news-desc">Analysts raise price targets following stronger-than-expected GPU shipments.</div>
+          <div class="news-meta">Gryphon Markets · 18m ago</div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-title">Oil rebounds 2% after supply cut speculation</div>
+          <div class="news-desc">Crude futures rise amid reports of coordinated OPEC+ production adjustments.</div>
+          <div class="news-meta">Gryphon Markets · 42m ago</div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-title">Tech stocks lead gains in afternoon trading</div>
+          <div class="news-desc">Mega-cap growth names outperform as volatility stabilizes.</div>
+          <div class="news-meta">Gryphon Markets · 1h ago</div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-title">JPMorgan upgrades semiconductor sector</div>
+          <div class="news-desc">Strong forward guidance and AI momentum drive optimistic outlook.</div>
+          <div class="news-meta">Gryphon Markets · 2h ago</div>
+        </div>
+
+<div class="news-item">
+  <div class="news-title">Federal Reserve signals patience on rate cuts</div>
+  <div class="news-desc">Officials indicate inflation progress remains uneven despite moderating wage growth.</div>
+  <div class="news-meta">Gryphon Markets · 3h ago</div>
+</div>
+
+<div class="news-item">
+  <div class="news-title">Gold climbs as dollar weakens in global trading</div>
+  <div class="news-desc">Safe-haven demand increases amid geopolitical tensions and bond volatility.</div>
+  <div class="news-meta">Gryphon Markets · 4h ago</div>
+</div>
+
+<div class="news-item">
+  <div class="news-title">Retail sales exceed expectations in January</div>
+  <div class="news-desc">Strong consumer spending boosts discretionary and travel stocks.</div>
+  <div class="news-meta">Gryphon Markets · 5h ago</div>
+</div>
+
+<div class="news-item">
+  <div class="news-title">Energy sector rallies on rising crude futures</div>
+  <div class="news-desc">Oil producers gain as supply constraints tighten global inventories.</div>
+  <div class="news-meta">Gryphon Markets · 6h ago</div>
+</div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="code.js"></script>
+</body>
+</html>

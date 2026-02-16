@@ -1,0 +1,1089 @@
+:root {
+  --sidebar-bg: #e4dbcb;
+  --header-bg: #f3f3f3;
+  --text-gray: #abb7c2;
+  --white: #ffffff;
+  --black: #000000;
+  --shadow: 0px 4px 12px rgba(13, 10, 44, 0.06);
+}
+
+/* ================= DARK MODE VARIABLES ================= */
+
+body.dark-mode {
+  --sidebar-bg: #1c1c1e;
+  --header-bg: #2a2a2e;
+  --white: #242426;
+  --black: #e4e4e7;
+  --text-gray: #a1a1aa;
+}
+
+/* ================= GLOBAL RESET ================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--white);
+  color: var(--black);
+  transition:
+    background-color 0.6s ease-in-out,
+    color 0.6s ease-in-out;
+}
+
+/* Smooth transitions for layout elements */
+.sidebar,
+.header,
+.main,
+.content,
+.settings-menu,
+.settings-panel,
+.panel-section,
+.setting-row {
+  transition:
+    background-color 0.6s ease-in-out,
+    color 0.6s ease-in-out,
+    border-color 0.6s ease-in-out;
+}
+
+/* ================= SVG ICON SUPPORT ================= */
+
+/* Smooth transition for icons ONLY */
+.ui-icon {
+  transition: filter 0.6s ease-in-out;
+}
+
+/* Turn ONLY UI icons white in dark mode */
+body.dark-mode .ui-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Protect logo from being inverted */
+.logo img {
+  filter: none !important;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.4s ease-in-out;
+}
+
+/* ================= APP LAYOUT ================= */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+  width: 248px;
+  background: var(--sidebar-bg);
+  padding: 30px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+body.dark-mode .sidebar {
+  background: linear-gradient(to bottom, #1c1c1e, #17171a);
+}
+
+.logo-section {
+  padding: 14px 19px;
+  margin-bottom: 50px;
+}
+
+.logo {
+  width: 106px;
+  height: 106px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.company-name {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.company-name .investing {
+  font-size: 11px;
+  display: block;
+}
+
+.menu-label {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 0 56px;
+  margin-bottom: 30px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 16px;
+}
+
+.nav-item {
+  font-size: 12px;
+  padding: 24px 103px 24px 40px;
+  text-decoration: none;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.nav-item.active {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.nav-item img {
+  margin-right: 16px;
+}
+
+/* ================= MAIN ================= */
+
+.main {
+  flex: 1;
+  margin-left: 248px;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  background: var(--header-bg);
+  height: 83px;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  border-bottom: 1px solid #eee;
+}
+
+body.dark-mode .header {
+  border-bottom: 1px solid #3a3a3d;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.header-right {
+  margin-left: auto;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 4px;
+  height: 60px;
+  padding: 0 8px;
+  position: relative;
+}
+
+body.dark-mode .search-box {
+  background: #2a2a2e;
+  border-color: #3a3a3d;
+}
+
+.search-box img {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.search-box input {
+  padding-left: 32px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 18px;
+  color: var(--text-gray);
+  flex: 1;
+  padding-right: 8px;
+}
+
+body.dark-mode .search-box input {
+  color: #e4e4e7;
+}
+
+.search-box input::placeholder {
+  color: var(--text-gray);
+}
+
+/* ================= HEADER ICONS ================= */
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.logout-text {
+  font-size: 12px;
+  color: var(--black);
+  margin-left: 8px;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 260px;
+  padding: 1rem;
+}
+
+/* ================= CONTENT ================= */
+
+.content {
+  flex: 1;
+  padding: 30px 40px;
+  overflow: hidden;   /* remove page scroll */
+  background: var(--white);
+}
+
+
+/* ================= SETTINGS LAYOUT ================= */
+
+.settings-layout {
+  display: flex;
+  height: 100%;
+}
+
+.settings-menu {
+  width: 260px;
+  border-right: 1px solid #ddd;
+  padding: 40px 30px;
+}
+
+body.dark-mode .settings-menu {
+  border-color: #3a3a3d;
+}
+
+.settings-item {
+  font-size: 14px;
+  padding: 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+}
+
+.settings-item .arrow {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.settings-item.active {
+  font-weight: 600;
+}
+
+/* ================= SETTINGS PANEL ================= */
+
+.settings-panel {
+  flex: 1;
+  padding: 40px 60px;
+}
+
+body.dark-mode .settings-panel {
+  background: #242426;
+}
+
+.panel-section {
+  background: #f3f3f3;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+body.dark-mode .panel-section {
+  background: #2c2c2f;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.dropdown-arrow {
+  font-size: 18px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-left: 20px;
+}
+
+.section-header p {
+  font-size: 12px;
+  color: #666;
+}
+
+body.dark-mode .section-header p {
+  color: #a1a1aa;
+}
+
+.setting-row {
+  background: #e9e9e9;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}
+
+body.dark-mode .setting-row {
+  background: #2a2a2e;
+  border-color: #3a3a3d;
+}
+
+/* ================= TOGGLE ================= */
+
+.square-toggle {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #333;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.square-toggle.active {
+  background: #ffffff;
+}
+
+body.dark-mode .square-toggle {
+  border-color: #d4d4d8;
+}
+
+body.dark-mode .square-toggle.active {
+  background: #d4d4d8;
+}
+
+/* ================= Alert page content ================= */
+
+/* Alerts Layout */
+.alerts-container {
+  display: grid;
+  grid-template-columns: 200px 350px 1fr;
+  height: 100%;
+  border-top: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+
+/* LEFT COLUMN */
+.alerts-categories {
+  border-right: 1px solid var(--border-color);
+  padding: 20px 0;
+}
+
+.category {
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.category:hover {
+  background: var(--card-hover);
+}
+
+.category.active {
+  font-weight: 600;
+  background: var(--card-active);
+}
+
+/* MIDDLE COLUMN */
+.alerts-list {
+  border-right: 1px solid var(--border-color);
+  overflow: hidden; /* removed scroll */
+}
+.alert-card {
+  padding: 18px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.alert-card:hover {
+  background: var(--card-hover);
+}
+
+.alert-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.alert-preview {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* RIGHT COLUMN */
+.alerts-reading {
+  padding: 20px;
+}
+
+.reading-title {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* === ALERTS PAGE - LIGHT MODE (MATCH HEADER) === */
+
+/* Left Column */
+.alerts-categories {
+  background-color: var(--header-bg);
+  border-right: 1px solid #ddd;
+}
+
+/* Middle Column */
+.alerts-list {
+  background-color: var(--header-bg);
+  border-right: 1px solid #ddd;
+}
+
+/* Message Rectangles */
+.alert-card {
+  background-color: var(--header-bg);
+  border-bottom: 1px solid #ddd;
+}
+
+.alert-card:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Right Column */
+.alerts-reading {
+  background-color: var(--header-bg);
+}
+
+
+:root {
+  --border-color: rgba(0, 0, 0, 0.1);
+  --card-hover: rgba(0, 0, 0, 0.05);
+  --card-active: rgba(0, 0, 0, 0.08);
+}
+
+body.dark {
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-hover: rgba(255, 255, 255, 0.05);
+  --card-active: rgba(255, 255, 255, 0.08);
+}
+
+/* === ALERT RECTANGLES - DARK MODE FIX === */
+
+body.dark-mode .alerts-list {
+  background-color: #1f1f22; /* slightly darker column base */
+}
+
+body.dark-mode .alert-card {
+  background-color: #2b2b30; /* lighter gray rectangles */
+  border-bottom: 1px solid #3a3a40;
+}
+
+body.dark-mode .alert-card:hover {
+  background-color: #34343a; /* subtle hover */
+}
+/* === LEFT COLUMN (INBOX AREA) DARK MODE === */
+
+body.dark-mode .alerts-categories {
+  background-color: #2b2b30; /* same lighter gray as alert cards */
+  border-right: 1px solid #3a3a40;
+}
+
+body.dark-mode .category {
+  color: #e4e4e7;
+}
+
+body.dark-mode .category:hover {
+  background-color: #34343a;
+}
+
+body.dark-mode .category.active {
+  background-color: #3a3a40;
+}
+
+/* === READING AREA - DARK MODE === */
+
+body.dark-mode .alerts-reading {
+  background-color: #242428; /* slightly darker than cards */
+  border-left: 1px solid #3a3a40;
+}
+
+/* ================= STOCK PAGE ================= */
+
+/* ================= STOCK PAGE ================= */
+
+.stock-grid {
+  display: grid;
+  grid-template-columns: 2.4fr 1.2fr;
+  gap: 28px;
+  width: 100%;
+  height: 100%; /* Fill content area */
+}
+
+/* Columns */
+
+.stock-left,
+.stock-right {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  height: 100%;
+}
+
+/* Make both left cards split space evenly */
+.stock-left .stock-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* prevents overflow */
+}
+
+/* Right side news fills full column */
+.stock-right .stock-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Cards */
+
+.stock-card {
+  background: var(--header-bg);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* prevents scroll */
+}
+
+/* Titles */
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+/* ================= TABLE ================= */
+
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  flex: 1;
+}
+
+.stock-table th {
+  text-align: left;
+  padding-bottom: 8px;
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 0.6;
+  letter-spacing: 0.4px;
+}
+
+.stock-table td {
+  padding: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  vertical-align: middle;
+}
+
+body.dark-mode .stock-table td {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.stock-table tr:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+body.dark-mode .stock-table tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Positive / Negative */
+
+.positive {
+  color: #28c76f;
+  font-weight: 500;
+}
+
+.negative {
+  color: #e05a5a;
+  font-weight: 500;
+}
+
+/* ================= SPARKLINES ================= */
+
+.sparkline {
+  width: 80px;
+  height: 20px;
+}
+
+.sparkline polyline {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sparkline.green polyline {
+  stroke: #28c76f;
+}
+
+.sparkline.red polyline {
+  stroke: #e05a5a;
+}
+
+/* ================= SECTOR BARS ================= */
+
+.sector-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 60px;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.sector-label {
+  font-size: 12px;
+}
+
+.sector-bar {
+  height: 6px;
+  background: #e2e2e2;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+body.dark-mode .sector-bar {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sector-fill {
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 6px;
+}
+
+.sector-value {
+  font-size: 11px;
+  text-align: right;
+  opacity: 0.7;
+}
+
+/* ================= NEWS PANEL ================= */
+
+.stock-right .stock-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.news-item {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+body.dark-mode .news-item {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.news-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.news-desc {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+
+.news-meta {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+/* ================= DARK MODE CARD ================= */
+
+body.dark-mode .stock-card {
+  background: #1f1f23;
+}
+
+body.dark-mode .stock-table th {
+  opacity: 0.7;
+}
+
+/* ================= PORTFOLIO PAGE ================= */
+
+.portfolio-grid {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 28px;
+  height: 100%;
+}
+
+/* ===== Top Stat Cards Row ===== */
+
+.portfolio-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 28px;
+}
+
+.portfolio-card {
+  background: var(--header-bg);
+  border-radius: 16px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body.dark-mode .portfolio-card {
+  background: #1f1f23;
+}
+
+.stat-title {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.stat-positive {
+  color: #28c76f;
+}
+
+/* ===== Bottom Section ===== */
+
+.portfolio-bottom {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 28px;
+  height: 100%;
+}
+
+/* Performance Chart Card */
+
+.performance-card {
+  background: var(--header-bg);
+  border-radius: 16px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body.dark-mode .performance-card {
+  background: #1f1f23;
+}
+
+/* Chart container fills card */
+.chart-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Transactions ===== */
+
+/* ================= TRANSACTION HISTORY ================= */
+
+.transactions-card {
+  background: #f3f3f5;
+  border-radius: 18px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+body.dark-mode .transactions-card {
+  background: #1f1f23;
+}
+
+.transactions-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+/* Table */
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+/* Header */
+
+.transactions-table thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.55;
+  padding-bottom: 14px;
+  letter-spacing: 0.3px;
+}
+
+/* Body Rows */
+
+.transactions-table tbody tr {
+  border-top: 1px solid rgba(0,0,0,0.06);
+  transition: background 0.2s ease;
+}
+
+body.dark-mode .transactions-table tbody tr {
+  border-color: rgba(255,255,255,0.08);
+}
+
+.transactions-table tbody tr:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+body.dark-mode .transactions-table tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* Cells */
+
+.transactions-table td {
+  padding: 16px 0;
+  font-weight: 500;
+}
+
+/* Right align price */
+
+.transactions-table td:last-child,
+.transactions-table th:last-child {
+  text-align: right;
+}
+
+/* Ticker style */
+
+.ticker-cell {
+  font-weight: 600;
+}
+
+/* Asset Cell Layout */
+.asset-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticker {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.company {
+  font-size: 11px;
+  opacity: 0.55;
+  margin-top: 2px;
+}
+
+/* Buy/Sell Tags */
+.type {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.type.buy {
+  background: rgba(40,199,111,0.12);
+  color: #28c76f;
+}
+
+.type.sell {
+  background: rgba(255,76,81,0.12);
+  color: #ff4d51;
+}
+
+/* Status Badges */
+.status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.status.completed {
+  background: rgba(0,0,0,0.06);
+}
+
+body.dark-mode .status.completed {
+  background: rgba(255,255,255,0.08);
+}
+
+.status.pending {
+  background: rgba(255,193,7,0.15);
+  color: #e0a800;
+}
+
+
+/* ================= D3 chart ================= */
+
+.chart-container {
+  flex: 1;
+  width: 100%;
+}
+
+.chart-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+
+#portfolioChart {
+  width: 100%;
+  height: 100%;
+}
+
+.performance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+/* Position toggle on right side of chart */
+.chart-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+}
+.toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  opacity: 1;
+}
+
+.toggle-btn.active {
+  background: #6c63ff;
+  color: white;
+  opacity: 1;
+}
+
+body.dark-mode .toggle-btn.active {
+  background: #8b85ff;
+}
+
+.top-stocks {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.mini-stock {
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mini-symbol {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.mini-price {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.mini-change {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mini-change.positive {
+  color: #22c55e;
+}
+
+body.dark-mode .mini-stock {
+  background: #2a2a2e;
+}
+

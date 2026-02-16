@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gryphon Investing — Alerts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="app">
+    
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+      <div class="logo-section">
+        <div class="logo">
+          <!-- LOGO (NO ui-icon CLASS) -->
+          <img id="siteLogo" src="/assets/icons/Gryphon.svg" alt="Gryphon Logo">
+        </div>
+
+        <p class="company-name">
+          Gryphon<span class="investing">Investing</span>
+        </p>
+      </div>
+
+      <div class="menu-label">Menu</div>
+
+      <nav class="menu">
+        <a href="index.html" class="nav-item">
+          <img src="/assets/icons/dashboard.svg" class="ui-icon" width="20" height="20">
+          Dashboard
+        </a>
+
+        <a href="stock.html" class="nav-item">
+          <img src="/assets/icons/stock.svg" class="ui-icon" width="20" height="20">
+          Stock
+        </a>
+
+        <a href="portfolio.html" class="nav-item">
+          <img src="/assets/icons/portfolio.svg" class="ui-icon" width="20" height="20">
+          Portfolio
+        </a>
+
+        <a href="alerts.html" class="nav-item active">
+          <img src="/assets/icons/alerts.svg" class="ui-icon" width="20" height="20">
+          Alerts
+        </a>
+
+        <a href="settings.html" class="nav-item">
+          <img src="/assets/icons/settings.svg" class="ui-icon" width="20" height="20">
+          Settings
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      
+      <!-- Header -->
+      <header class="header">
+        <h1 class="page-title">Alerts</h1>
+
+        <div class="header-right">
+          <div class="search-box">
+            <img src="/assets/icons/search.svg" class="ui-icon" width="20" height="20">
+            <input type="text" placeholder="Search Stock..." />
+          </div>
+        </div>
+
+        <div class="header-icons">
+
+          <!-- Alert Button -->
+          <button id="alertButton" class="icon-button">
+            <img src="/assets/icons/alerts2.svg" class="ui-icon" width="25" height="25">
+          </button>
+
+          <!-- User Icon -->
+          <img src="/assets/icons/user.svg" class="ui-icon" width="28" height="28">
+
+          <span class="logout-text">Log out</span>
+
+          <!-- Alert Popup -->
+          <div id="alertPopup" class="popup">
+            <div class="popup-content">
+              <span class="close-btn">&times;</span>
+              <h3>Notifications</h3>
+              <p>You have new alerts! Check your alerts page for details.</p>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content">
+<div class="alerts-container">
+
+  <!-- LEFT COLUMN -->
+  <div class="alerts-categories">
+    <div class="category active">Inbox</div>
+    <div class="category">Stock Alerts</div>
+    <div class="category">Updates</div>
+  </div>
+
+  <!-- MIDDLE COLUMN -->
+  <div class="alerts-list">
+
+    <div class="alert-card">
+      <div class="alert-title">Gryphon</div>
+      <div class="alert-preview">Welcome to finish your account set...</div>
+    </div>
+
+    <div class="alert-card">
+      <div class="alert-title">Portfolio Alert</div>
+      <div class="alert-preview">Your portfolio has increased 4.2%...</div>
+    </div>
+
+    <div class="alert-card">
+      <div class="alert-title">Stock Update</div>
+      <div class="alert-preview">AAPL has moved +2.1% today...</div>
+    </div>
+
+    <div class="alert-card">
+      <div class="alert-title">Gryphon</div>
+      <div class="alert-preview">2FA setup completed successfully...</div>
+    </div>
+
+    <div class="alert-card">
+      <div class="alert-title">Stock Update</div>
+      <div class="alert-preview">TSLA earnings released...</div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="alerts-reading">
+    <div class="reading-title">Reading space</div>
+  </div>
+
+</div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="code.js"></script>
+</body>
+</html>
