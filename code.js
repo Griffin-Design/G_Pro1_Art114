@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
-    updateLogo(); // 🔥 THIS was missing
+    updateLogo(); // THIS was missing
   });
 
 });

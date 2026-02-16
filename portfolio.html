@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gryphon Investing — Portfolio</title>
+   <link rel="icon" href="/assets/icons/Gryphon.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/assets/icons/Gryphon Dark mode.svg" media="(prefers-color-scheme: dark)">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -81,13 +83,19 @@
           <span class="logout-text">Log out</span>
 
           <!-- Alert Popup -->
-          <div id="alertPopup" class="popup">
-            <div class="popup-content">
-              <span class="close-btn">&times;</span>
-              <h3>Notifications</h3>
-              <p>You have new alerts! Check your alerts page for details.</p>
-            </div>
-          </div>
+        <div id="alertPopup" class="popup">
+  <div class="popup-header">
+    <h3>Announcement and Alerts</h3>
+    <button class="close-btn">✕</button>
+  </div>
+
+  <div class="popup-body">
+    <!-- Your alert content goes here -->
+    <p class="popup-text">No new announcements.</p>
+  </div>
+</div>
+
+
 
         </div>
       </header>
@@ -99,18 +107,81 @@
   <!-- Top Stats -->
   <div class="portfolio-stats">
     <div class="portfolio-card">
-      <div class="stat-title">Your Investments</div>
-      <div class="stat-value">$6,566.48</div>
+ <p class="summary-label">Your Investments</p>
+<h2 class="summary-value">$6,566.48</h2>
+
     </div>
 
-    <div class="portfolio-card">
-      <div class="stat-title">Current Value</div>
-      <div class="stat-value stat-positive">$16,357.26</div>
-    </div>
+  <div class="portfolio-card">
+  <p class="summary-label">Current Value</p>
+  <h2 class="summary-value positive">$16,357.26</h2>
+</div>
+
 
     <div class="portfolio-card">
       <div class="stat-title">Top Performing Stock</div>
-      <!-- Your mini cards inside here -->
+     <div class="top-performers">
+
+  <div class="top-stock-row positive">
+    <div class="stock-left">
+      <div class="symbol">NVDA</div>
+      <div class="company">NVIDIA</div>
+    </div>
+    <div class="stock-right">
+      <div class="gain">+30.45%</div>
+      <div class="value">$7,332</div>
+    </div>
+  </div>
+
+  <div class="top-stock-row positive">
+    <div class="stock-left">
+      <div class="symbol">AMD</div>
+      <div class="company">Advanced Micro Devices</div>
+    </div>
+    <div class="stock-right">
+      <div class="gain">+18.12%</div>
+      <div class="value">$3,375</div>
+    </div>
+  </div>
+
+  <div class="top-stock-row positive">
+    <div class="stock-left">
+      <div class="symbol">AAPL</div>
+      <div class="company">Apple Inc.</div>
+    </div>
+    <div class="stock-right">
+      <div class="gain">+12.84%</div>
+      <div class="value">$4,481</div>
+    </div>
+  </div>
+
+  <div class="top-stock-row positive">
+    <div class="stock-left">
+      <div class="symbol">SPY</div>
+      <div class="company">S&P 500 ETF</div>
+    </div>
+    <div class="stock-right">
+      <div class="gain">+9.32%</div>
+      <div class="value">$12,630</div>
+    </div>
+  </div>
+
+</div>
+
+
+  <div class="stock-meta">
+    <div>
+      <span class="meta-label">Shares</span>
+      <span class="meta-value">40</span>
+    </div>
+
+    <div>
+      <span class="meta-label">Total Gain</span>
+      <span class="meta-value positive">$1,712</span>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
 
@@ -118,7 +189,6 @@
   <div class="portfolio-bottom">
 
    <div class="performance-card">
-
   <div class="card-title">Portfolio Performance</div>
 
   <div class="chart-wrapper">
@@ -133,15 +203,7 @@
       <button class="toggle-btn" data-range="1Y">1Y</button>
     </div>
   </div>
-
 </div>
-
-
-  <div class="chart-container">
-    <svg id="portfolioChart"></svg>
-  </div>
-</div>
-
 
     <div class="transactions-card">
   <div class="transactions-title">Transaction History</div>
@@ -323,9 +385,11 @@
     </main>
   </div>
 
-  <script src="code.js"></script>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="code.js"></script>
  <script>
+const svg = d3.select("#portfolioChart");
+const container = document.querySelector(".chart-container");
 const datasets = {
   "1M": [
     { label: "W1", value: 14500 },
@@ -356,51 +420,59 @@ const datasets = {
   ]
 };
 
-const svg = d3.select("#portfolioChart");
-const container = document.querySelector(".chart-container");
-
-const width = container.clientWidth;
-const height = container.clientHeight;
-
-svg.attr("width", width).attr("height", height);
-
-const margin = { top: 20, right: 20, bottom: 30, left: 50 };
-const innerWidth = width - margin.left - margin.right;
-const innerHeight = height - margin.top - margin.bottom;
-
-const g = svg.append("g")
-  .attr("transform", `translate(${margin.left},${margin.top})`);
-
-const defs = svg.append("defs");
-
-const gradient = defs.append("linearGradient")
-  .attr("id", "areaGradient")
-  .attr("x1", "0")
-  .attr("x2", "0")
-  .attr("y1", "0")
-  .attr("y2", "1");
-
-gradient.append("stop")
-  .attr("offset", "0%")
-  .attr("stop-color", "#6c63ff")
-  .attr("stop-opacity", 0.4);
-
-gradient.append("stop")
-  .attr("offset", "100%")
-  .attr("stop-color", "#6c63ff")
-  .attr("stop-opacity", 0);
+let currentRange = "1M";
 
 function drawChart(data) {
 
-  g.selectAll("*").remove();
+  const container = document.querySelector(".chart-container");
+  const svg = d3.select("#portfolioChart");
+
+  svg.selectAll("*").remove();
+
+  const width = container.clientWidth;
+  const height = 400;
+
+
+  const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+  const innerWidth = width - margin.left - margin.right;
+  const innerHeight = height - margin.top - margin.bottom;
+
+  svg
+    .attr("width", width)
+    .attr("height", height);
+
+  const g = svg.append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // Gradient
+  const defs = svg.append("defs");
+
+  const gradient = defs.append("linearGradient")
+    .attr("id", "areaGradient")
+    .attr("x1", "0")
+    .attr("x2", "0")
+    .attr("y1", "0")
+    .attr("y2", "1");
+
+  gradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", "#6c63ff")
+    .attr("stop-opacity", 0.4);
+
+  gradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", "#6c63ff")
+    .attr("stop-opacity", 0);
 
   const x = d3.scalePoint()
     .domain(data.map(d => d.label))
     .range([0, innerWidth]);
 
   const y = d3.scaleLinear()
-    .domain([d3.min(data, d => d.value) * 0.9,
-             d3.max(data, d => d.value) * 1.05])
+    .domain([
+      d3.min(data, d => d.value) * 0.9,
+      d3.max(data, d => d.value) * 1.05
+    ])
     .range([innerHeight, 0]);
 
   const line = d3.line()
@@ -426,11 +498,7 @@ function drawChart(data) {
   g.append("path")
     .datum(data)
     .attr("fill", "url(#areaGradient)")
-    .attr("d", area)
-    .style("opacity", 0)
-    .transition()
-    .duration(600)
-    .style("opacity", 1);
+    .attr("d", area);
 
   // Line
   g.append("path")
@@ -438,11 +506,7 @@ function drawChart(data) {
     .attr("fill", "none")
     .attr("stroke", "#6c63ff")
     .attr("stroke-width", 3)
-    .attr("d", line)
-    .style("opacity", 0)
-    .transition()
-    .duration(600)
-    .style("opacity", 1);
+    .attr("d", line);
 
   // X axis
   g.append("g")
@@ -451,27 +515,38 @@ function drawChart(data) {
 
   // Y axis
   g.append("g")
-    .call(d3.axisLeft(y).ticks(5).tickFormat(d => "$" + d/1000 + "k"));
+    .call(
+      d3.axisLeft(y)
+        .ticks(5)
+        .tickFormat(d => "$" + (d / 1000).toFixed(1) + "k")
+    );
 }
 
-// Initial render
-drawChart(datasets["1M"]);
 
-// Toggle logic
+// Initial render
+drawChart(datasets[currentRange]);
+
+// Toggle buttons
 document.querySelectorAll(".toggle-btn").forEach(btn => {
-  btn.addEventListener("click", function() {
+  btn.addEventListener("click", function () {
 
     document.querySelectorAll(".toggle-btn")
       .forEach(b => b.classList.remove("active"));
 
     this.classList.add("active");
 
-    const range = this.dataset.range;
-    drawChart(datasets[range]);
+    currentRange = this.dataset.range;
+    drawChart(datasets[currentRange]);
   });
 });
-</script>
 
+// Responsive redraw on window resize
+window.addEventListener("resize", () => {
+  drawChart(datasets[currentRange]);
+});
+
+
+</script>
 
 </body>
 </html>

@@ -90,7 +90,7 @@ body.dark-mode .ui-icon {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  min-height: 100vh;
   overflow-y: auto;
   z-index: 100;
 }
@@ -266,25 +266,67 @@ body.dark-mode .search-box input {
   margin-left: 8px;
 }
 
+/* ================= ALERT POPUP ================= */
+
+/* ================= ALERT POPUP ================= */
+
 .popup {
   display: none;
   position: absolute;
-  top: 50px;
+  top: 60px;
   right: 0;
+  width: 420px;
+  background: #e4dbcb; /* beige tone */
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 22px 24px;
   z-index: 1000;
-  background-color: var(--white);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  width: 260px;
-  padding: 1rem;
 }
+
+/* Header */
+.popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.popup-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e1e1e;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #1e1e1e;
+}
+
+/* Body */
+.popup-body {
+  text-align: center;
+}
+
+.popup-text {
+  font-size: 14px;
+  color: #333;
+}
+
 
 /* ================= CONTENT ================= */
 
 .content {
   flex: 1;
-  padding: 30px 40px;
-  overflow: hidden;   /* remove page scroll */
+   padding: 40px 60px;   /* top/bottom 40, left/right 60 */
+  overflow-y: auto;
   background: var(--white);
 }
 
@@ -777,10 +819,9 @@ body.dark-mode .stock-table th {
 
 .portfolio-grid {
   display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 28px;
-  height: 100%;
+  gap: 40px;
 }
+
 
 /* ===== Top Stat Cards Row ===== */
 
@@ -793,10 +834,18 @@ body.dark-mode .stock-table th {
 .portfolio-card {
   background: var(--header-bg);
   border-radius: 16px;
-  padding: 22px 24px;
+  padding: 28px;   /* slightly more padding */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;  /* IMPORTANT */
+}
+
+.portfolio-stats {
+  margin-bottom: 10px;
+}
+
+.portfolio-bottom {
+  margin-top: 10px;
 }
 
 body.dark-mode .portfolio-card {
@@ -810,7 +859,7 @@ body.dark-mode .portfolio-card {
 }
 
 .stat-value {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -819,13 +868,12 @@ body.dark-mode .portfolio-card {
 }
 
 /* ===== Bottom Section ===== */
-
 .portfolio-bottom {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: 28px;
-  height: 100%;
 }
+
 
 /* Performance Chart Card */
 
@@ -835,19 +883,11 @@ body.dark-mode .portfolio-card {
   padding: 22px 24px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
+
 
 body.dark-mode .performance-card {
   background: #1f1f23;
-}
-
-/* Chart container fills card */
-.chart-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* ===== Transactions ===== */
@@ -991,11 +1031,6 @@ body.dark-mode .status.completed {
 
 /* ================= D3 chart ================= */
 
-.chart-container {
-  flex: 1;
-  width: 100%;
-}
-
 .chart-wrapper {
   position: relative;
   flex: 1;
@@ -1087,3 +1122,256 @@ body.dark-mode .mini-stock {
   background: #2a2a2e;
 }
 
+.top-stock {
+  margin-top: 12px;
+}
+
+.stock-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.stock-symbol {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.stock-name {
+  font-size: 13px;
+  color: #888;
+}
+
+.stock-price {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.stock-change {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.stock-change.positive,
+.meta-value.positive {
+  color: #16c784;
+}
+
+.stock-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.meta-label {
+  display: block;
+  color: #888;
+}
+
+.meta-value {
+  font-weight: 500;
+}
+.top-performers {
+  margin-top: 10px;
+  max-height: 140px;   /* prevents card from growing */
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.top-stock-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.top-stock-row:last-child {
+  border-bottom: none;
+}
+
+.stock-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.symbol {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.company {
+  font-size: 11px;
+  color: #888;
+}
+
+
+.gain {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.value {
+  font-size: 11px;
+  color: #888;
+}
+
+.positive .gain {
+  color: #16c784;
+}
+
+.chart-container {
+  width: 100%;
+  height: 400px;
+}
+
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+}
+/* Top summary numbers */
+.summary-value {
+  font-size: 3.4rem;   /* bigger */
+  font-weight: 700;
+  margin-top: 40px;
+}
+
+/* Optional: label text slightly larger too */
+.summary-label {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+.portfolio-card .summary-value.positive {
+  color: #22c55e;
+}
+.performance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portfolio-card,
+.performance-card,
+.transactions-card {
+  min-height: 0;
+}
+
+/* ================= Dashboard page ================= */
+
+.dashboard-grid {
+  display: grid;
+  gap: 40px;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.dashboard-middle {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 28px;
+}
+
+.dashboard-bottom {
+  display: grid;
+}
+
+.dashboard-card {
+  background: var(--header-bg);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-card .news-item {
+  padding: 14px 0;
+}
+
+.dashboard-card {
+  overflow: hidden;
+}
+
+.dashboard-card .news-item:last-child {
+  border-bottom: none;
+}
+/* Keep container same size */
+.market-insights {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollable news area */
+.news-container {
+  max-height: 400px;  /* Adjust to match your current card height */
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Optional: nice scrollbar styling */
+.news-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.news-container::-webkit-scrollbar-thumb {
+  background: #2a2f45;
+  border-radius: 10px;
+}
+
+.news-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+#portfolio-d3-chart {
+  width: 100%;
+  flex: 1;          /* fills remaining space */
+  min-height: 400px;
+}
+
+.tooltip {
+  position: absolute;
+  background: #1e2235;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  pointer-events: none;
+  opacity: 0;
+  color: #fff;
+}
+.dashboard-bottom {
+  grid-column: 1 / -1;
+}
+.dashboard-bottom .dashboard-card {
+  width: 100%;
+}
+#portfolio-d3-chart {
+  width: 100%;
+  height: 400px;   /* You can adjust */
+}
+@media (max-width: 1200px) {
+
+  .content {
+    padding: 30px 40px;
+  }
+
+  .stock-grid,
+  .portfolio-bottom,
+  .dashboard-middle {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .popup {
+    width: 360px;
+  }
+}
